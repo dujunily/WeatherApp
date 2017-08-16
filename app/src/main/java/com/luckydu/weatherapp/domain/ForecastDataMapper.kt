@@ -25,7 +25,12 @@ public class ForecastDataMapper {
 
     private fun convertForecastItemToDomain(forecast: Forecast): ModelForecast {
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        return ModelForecast(convertDate(forecast.dt), forecast.weather[0].description, forecast.temp.max.toInt(), forecast.temp.min.toInt())
+        return ModelForecast(convertDate(forecast.dt), forecast.weather[0].description, forecast.temp.max.toInt(), forecast.temp.min.toInt(),generateIconUrl(forecast.weather[0].icon))
+    }
+
+    private fun generateIconUrl(iconCode: String): String {
+//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return "http://openweathermap.org/img/w/$iconCode.png"
     }
 
     private fun convertDate(date: Long): String {
