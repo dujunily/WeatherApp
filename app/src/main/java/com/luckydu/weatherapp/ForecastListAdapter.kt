@@ -19,7 +19,7 @@ import org.jetbrains.anko.find
  *
  * @since 2017-08-15 17:10
  */
-class ForecastListAdapter(val weekForecast: ForecastList, val itemClick: ForecastListAdapter.OnItemClickListener) : RecyclerView.Adapter<ForecastListAdapter.ViewHolder>() {
+class ForecastListAdapter(val weekForecast: ForecastList, val itemClick: (Forecast) -> Unit) : RecyclerView.Adapter<ForecastListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
         // 上面的todo不注释的话，会导致显示没有实现这些方法
@@ -35,7 +35,7 @@ class ForecastListAdapter(val weekForecast: ForecastList, val itemClick: Forecas
         return weekForecast.size()
     }
 
-    class ViewHolder(view: View, val itemClick: OnItemClickListener) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View,val itemClick: (Forecast) -> Unit) : RecyclerView.ViewHolder(view) {
         private val iconView: ImageView = view.find(R.id.icon)
         private val dateView: TextView = view.find(R.id.date)
         private val descriptionView: TextView = view.find(R.id.description)
@@ -54,9 +54,5 @@ class ForecastListAdapter(val weekForecast: ForecastList, val itemClick: Forecas
                 }
             }
         }
-    }
-
-    public interface OnItemClickListener {
-        operator fun invoke(forecast: Forecast)
     }
 }
