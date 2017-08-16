@@ -13,7 +13,7 @@ import com.luckydu.weatherapp.domain.model.Forecast as ModelForecast
  *
  * @since 2017-08-16 10:25
  */
-public class ForecastDataMapper {
+class ForecastDataMapper {
     fun convertFromDataModel(forecast: ForecastResult):ForecastList{
         return ForecastList(forecast.city.name,forecast.city.country,convertForecastListToDomain(forecast.list))
     }

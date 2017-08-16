@@ -6,6 +6,6 @@ package com.luckydu.weatherapp.domain
  *
  * @since 2017-08-16 10:20
  */
-public interface Command<T> {
+interface Command<out T> {
     fun execute():T
 }

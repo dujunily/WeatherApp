@@ -8,7 +8,7 @@ import com.luckydu.weatherapp.data.ForecastRequest
  *
  * @since 2017-08-16 10:31
  */
-class RequestForecastCommand(val zipCode: String) : Command<ForecastList> {
+class RequestForecastCommand(private val zipCode: String) : Command<ForecastList> {
     override fun execute(): ForecastList {
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         val forecastRequest = ForecastRequest(zipCode)
