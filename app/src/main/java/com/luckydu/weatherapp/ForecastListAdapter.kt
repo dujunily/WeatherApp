@@ -3,6 +3,7 @@ package com.luckydu.weatherapp
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import android.widget.TextView
+import com.luckydu.weatherapp.domain.ForecastList
 
 @Suppress("UNREACHABLE_CODE")
 /**
@@ -11,7 +12,7 @@ import android.widget.TextView
  *
  * @since 2017-08-15 17:10
  */
-class ForecastListAdapter(val items: List<String>) :RecyclerView.Adapter<ForecastListAdapter.ViewHolder>(){
+class ForecastListAdapter(val weekForecast: ForecastList) : RecyclerView.Adapter<ForecastListAdapter.ViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
@@ -21,14 +22,14 @@ class ForecastListAdapter(val items: List<String>) :RecyclerView.Adapter<Forecas
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        holder?.textView?.text = items[position]
+        with(weekForecast.dailyForecast[position]) {
+            holder?.textView?.text = "$date - $description - $high/$low"}
     }
 
     override fun getItemCount(): Int {
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        return items.size
+        return weekForecast.dailyForecast.size
     }
 
     class ViewHolder(val textView: TextView) : RecyclerView.ViewHolder(textView)
-
 }
